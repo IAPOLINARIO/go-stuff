@@ -2,8 +2,9 @@ package views
 
 import "html/template"
 
-func NewView(files ...string) *View {
-	files = append(files, "views/layouts/footer.gohtml")
+// NewView creates a new view object
+func NewView(layout string, files ...string) *View {
+	files = append(files, "views/layout/mainpage.gohtml")
 
 	t, err := template.ParseFiles(files...)
 
@@ -13,9 +14,12 @@ func NewView(files ...string) *View {
 
 	return &View{
 		Template: t,
+		Layout:   layout,
 	}
 }
 
+// View is the struct that holds the template definition
 type View struct {
 	Template *template.Template
+	Layout   string
 }
