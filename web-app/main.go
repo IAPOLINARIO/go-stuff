@@ -9,24 +9,13 @@ import (
 )
 
 var (
-	homeView    *views.View
-	contactView *views.View
+	homeView *views.View
 )
 
 func home(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html")
 
 	if err := homeView.Template.Execute(w, nil); err != nil {
-		panic(err)
-	}
-
-	w.WriteHeader(http.StatusOK)
-}
-
-func contact(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html")
-
-	if err := contactView.Template.Execute(w, nil); err != nil {
 		panic(err)
 	}
 
@@ -42,13 +31,25 @@ func Handle404() http.Handler {
 }
 
 func main() {
-	homeView = views.NewView("views/home.gohtml")
-	contactView = views.NewView("views/contact.gohtml")
+	layout := "views/layout/default.gohtml"
+	homeView = views.NewView(layout,
+		"views/home.gohtml",
+		"views/about.gohtml",
+		"views/contact.gohtml",
+		"views/facts.gohtml",
+		"views/footer.gohtml",
+		"views/header.gohtml",
+		"views/hero.gohtml",
+		"views/portfolio.gohtml",
+		"views/resume.gohtml",
+		"views/services.gohtml",
+		"views/skills.gohtml",
+		"views/testimonials.gohtml",
+	)
 
 	r := mux.NewRouter()
 	r.NotFoundHandler = Handle404()
 	r.HandleFunc("/", home)
-	r.HandleFunc("/contact", contact)
 
 	fmt.Println("Server is up & running...")
 	http.ListenAndServe(":3000", r)

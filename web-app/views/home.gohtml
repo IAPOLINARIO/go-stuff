@@ -1,3 +1,45 @@
-{{define "master"}}
+{{define "contentMain"}}
+
+  <!-- ======= Hero Section ======= -->
+  {{template "hero" .}}
+  <!-- End Hero -->
+
+    <!-- Main section -->
+    <main id="main">
+
+      <!-- ======= About Section ======= -->
+      {{template "about" .}}
+      <!-- End About Section -->
+
+      <!-- ======= Facts Section ======= -->
+      {{template "facts" .}}
+      <!-- End Facts Section -->
+
+      <!-- ======= Skills Section ======= -->
+      {{template "skills" .}}
+      <!-- End Skills Section -->
+
+      <!-- ======= Resume Section ======= -->
+      {{template "resume" .}}
+      <!-- End Resume Section -->
+
+      <!-- ======= Portfolio Section ======= -->
+      {{template "portfolio" .}}
+      <!-- End Portfolio Section -->
+
+      <!-- ======= Services Section ======= -->
+      {{template "services" .}}
+      <!-- End Services Section -->
+
+      <!-- ======= Testimonials Section ======= -->
+      {{template "testimonials" .}}
+      <!-- End Testimonials Section -->
+
+      <!-- ======= Contact Section ======= -->
+      {{template "contact" .}}
+      <!-- End Contact Section -->
+
+    </main>
+    <!-- End #main -->
 
 {{end}}
